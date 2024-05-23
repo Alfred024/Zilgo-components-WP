@@ -1,62 +1,189 @@
-
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <title>Gallery 04</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link
-            href="https://fonts.googleapis.com/css2?family=Poppins&display=swap"
-            rel="stylesheet"
-        >
-        <link rel="stylesheet" href="style.css">
-    </head>
-    <body>
-        <div class="gallery">
-            <article class="card">
-                <figure>
-                    <img
-                        src="images/forest.jpg"
-                        alt="Winter Forest"
-                    >
-                    <figcaption>
-                        <h3>Winter Forest</h3>
-                    </figcaption>
-                </figure>
-            </article>
-            <article class="card">
-                <figure>
-                    <img
-                        src="images/lavender-field.jpg"
-                        alt="Lavender Field"
-                    >
-                    <figcaption>
-                        <h3>Lavender Field</h3>
-                    </figcaption>
-                </figure>
-            </article>
-            <article class="card">
-                <figure>
-                    <img
-                        src="images/wooden-bridge.jpg"
-                        alt="Wooden Bridge"
-                    >
-                    <figcaption>
-                        <h3>Wooden Bridge</h3>
-                    </figcaption>
-                </figure>
-            </article>
-            <!-- Pictures from Freepik -->
-        </div>            
-    </body>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Vertical Tabs</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet" type='text/css'>
+    <link rel="stylesheet" type="text/css" href="./styles/style.css">
+    <link rel="stylesheet" href="https://alfred024.github.io/CSS-mio/styles.css">
+</head>
+
+<body class="flex flex-column width-100">
+    <!-- <div class="Img-Container">
+            <img src="https://static.righto.com/images/z80/Z80_arch.svg-w700.png" alt="">
+        </div> -->
+    <div class="tabs-container width-80">
+        <ul class="tabs">
+            <li>
+                <a id="tab1" title="Analytics" href="#tab1">
+                    <svg viewBox="0 0 24 24" fill="none" width="24" height="24" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M7 8.5H10.5M13.75 14H17.25M13.75 16.5H17.25M6.75 15.25H10.75M8.75 17.25V13.25M14.1001 7L16.9285 9.82843M14.1001 9.82861L16.9285 7.00019M6 4H18C19.1046 4 20 4.89543 20 6V18C20 19.1046 19.1046 20 18 20H6C4.89543 20 4 19.1046 4 18V6C4 4.89543 4.89543 4 6 4Z"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                    ALU
+                </a>
+            </li>
+            <li>
+                <a id="tab2" title="Reports" href="#tab2">
+                    <svg fill="currentColor" width="24" height="24" version="1.1" id="Layer_1"
+                        xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                        viewBox="0 0 512 512" xml:space="preserve">
+                        <g>
+                            <g>
+                                <path
+                                    d="M490.667,42.667H448V21.333C448,9.551,438.449,0,426.667,0H320c-11.782,0-21.333,9.551-21.333,21.333v21.333H256
+                                    c-11.782,0-21.333,9.551-21.333,21.333v192h-21.333v-21.333c0-11.782-9.551-21.333-21.333-21.333H85.333
+                                    c-11.782,0-21.333,9.551-21.333,21.333V256H21.333C9.551,256,0,265.551,0,277.333v213.333C0,502.449,9.551,512,21.333,512h64
+                                    c11.782,0,21.333-9.551,21.333-21.333v-21.333h64v21.333c0,11.782,9.551,21.333,21.333,21.333h64h64
+                                    c11.782,0,21.333-9.551,21.333-21.333v-21.333h64v21.333c0,11.782,9.551,21.333,21.333,21.333h64
+                                    c11.782,0,21.333-9.551,21.333-21.333V277.333V64C512,52.218,502.449,42.667,490.667,42.667z M277.333,85.333H320
+                                    c11.782,0,21.333-9.551,21.333-21.333V42.667h64V64c0,11.782,9.551,21.333,21.333,21.333h42.667V256h-192V85.333z M192,426.667
+                                    H85.333C73.551,426.667,64,436.218,64,448v21.333H42.667V298.667h42.667c11.782,0,21.333-9.551,21.333-21.333V256h64v21.333
+                                    c0,11.782,9.551,21.333,21.333,21.333h42.667v170.667h-21.333V448C213.333,436.218,203.782,426.667,192,426.667z M469.333,469.333
+                                    H448V448c0-11.782-9.551-21.333-21.333-21.333H320c-11.782,0-21.333,9.551-21.333,21.333v21.333h-21.333V298.667h192V469.333z" />
+                            </g>
+                        </g>
+                    </svg>
+                    Registros
+                </a>
+            </li>
+            <li>
+                <a id="tab3" title="Performance" href="#tab3">
+                    <svg width="24" height="24" viewBox="0 0 24 24" id="Layer_1" data-name="Layer 1"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <style>
+                                .cls-1 {
+                                    fill: none;
+                                    stroke: currentColor;
+                                    stroke-miterlimit: 10;
+                                    stroke-width: 1.91px;
+                                }
+                            </style>
+                        </defs>
+                        <path class="cls-1"
+                            d="M1.5,2.43V8.16H8.18a1,1,0,0,1,1,.95V22.48h5.72V9.11a1,1,0,0,1,1-.95H22.5V2.43Z" />
+                        <line class="cls-1" x1="1.5" y1="0.52" x2="1.5" y2="10.07" />
+                        <line class="cls-1" x1="22.5" y1="0.52" x2="22.5" y2="10.07" />
+                        <line class="cls-1" x1="7.23" y1="22.48" x2="16.77" y2="22.48" />
+                        <line class="cls-1" x1="7.23" y1="12.93" x2="16.77" y2="12.93" />
+                    </svg>
+                    Buses
+                </a>
+            </li>
+            <li>
+                <a id="tab4" title="Performance" href="#tab4">
+                    <?xml version="1.0" encoding="utf-8"?>
+                    <svg fill="none" width="24" height="24" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M0 10l8 4 8-4v2l-8 4-8-4v-2zm0-4l8 4 8-4v2l-8 4-8-4V6zm8-6l8 4-8 4-8-4 8-4z"
+                            fill-rule="evenodd" />
+                    </svg>
+                    Pila
+                </a>
+            </li>
+            <li>
+                <a id="tab5" title="Performance" href="#tab5">
+                    <?xml version="1.0" encoding="UTF-8"?>
+                    <svg fill="none" width="24" height="24" viewBox="0 0 24 24" version="1.1"
+                        xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                        <title>ic_fluent_arrows_bidirectional_24_regular</title>
+                        <desc>Created with Sketch.</desc>
+                        <path
+                            d="M15.001,8.999 L9.004,8.999 L9.00498491,6.74982882 C9.00498491,6.09013561 8.21462601,5.75179761 7.73729401,6.20715384 L2.23356691,11.4574962 C1.92381447,11.752988 1.92382252,12.2473813 2.23358458,12.542863 L7.73731168,17.792863 L7.81957701,17.8614839 C8.30002573,18.2096102 9.00498491,17.8732037 9.00498491,17.2501712 L9.004,15 L15.001,15 L15.0015761,17.2501712 C15.0015761,17.9100665 15.792351,18.2483191 16.2695726,17.7925545 L21.7667386,12.5425545 C22.0760697,12.2471317 22.0760778,11.7532376 21.7667563,11.4578047 L16.2695902,6.20746235 C15.792375,5.75167418 15.0015761,6.08992183 15.0015761,6.74982882 L15.001,8.999 Z M3.837,12 L7.504,8.501 L7.50498491,9.74962317 C7.50498491,10.1638367 7.84077135,10.4996232 8.25498491,10.4996232 L15.7515761,10.4996232 L15.8533467,10.4927766 C16.2194222,10.4431141 16.5015761,10.1293189 16.5015761,9.74962317 L16.501,8.503 L20.162,12 L16.501,15.496 L16.5015761,14.2507192 C16.5015761,13.8365056 16.1657897,13.5007192 15.7515761,13.5007192 L8.25498491,13.5007192 L8.15321435,13.5075658 C7.78713879,13.5572282 7.50498491,13.8710234 7.50498491,14.2507192 L7.504,15.498 L3.837,12 Z"
+                            id="🎨-Color">
+                    </svg>
+                    Intefaz I/O
+                </a>
+            </li>
+            <li>
+                <a id="tab6" title="Performance" href="#tab6">
+                    <?xml version="1.0" encoding="utf-8"?><!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
+                    <svg fill="none" width="24" height="24" viewBox="0 0 24 24" id="Layer_1" data-name="Layer 1"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <style>
+                                .cls-1 {
+                                    fill: none;
+                                    stroke: #aba7a7;
+                                    stroke-miterlimit: 10;
+                                    stroke-width: 1.91px;
+                                }
+                            </style>
+                        </defs>
+                        <path class="cls-1"
+                            d="M21.55,11.05a1,1,0,0,0,.95.95v6.68H1.5V12a1,1,0,0,0,0-1.91V5.32h21v4.77A1,1,0,0,0,21.55,11.05Z" />
+                        <rect class="cls-1" x="6.27" y="9.14" width="3.82" height="3.82" />
+                        <rect class="cls-1" x="10.09" y="9.14" width="3.82" height="3.82" />
+                        <rect class="cls-1" x="13.91" y="9.14" width="3.82" height="3.82" />
+                        <line class="cls-1" x1="4.36" y1="15.82" x2="4.36" y2="18.68" />
+                        <line class="cls-1" x1="8.18" y1="15.82" x2="8.18" y2="18.68" />
+                        <line class="cls-1" x1="12" y1="15.82" x2="12" y2="18.68" />
+                        <line class="cls-1" x1="15.82" y1="15.82" x2="15.82" y2="18.68" />
+                        <line class="cls-1" x1="19.64" y1="15.82" x2="19.64" y2="18.68" />
+                    </svg>
+                    SRAM
+                </a>
+            </li>
+        </ul>
+        <div class="tab-content-wrapper">
+            <section id="tab1-content" class="tab-content">
+                <h2>ALU</h2>
+                <p>
+                    ALU ZilogZ80: Encargada de realizar operaciones lógicas y aritméticas. Tiene 4 bits de ancho, para ello se apilan 4 segmentos de 1 bit cada uno. El bus de registro proporciona la conexión directa con la ALU. La ALU puede procesar 8 bits gracias al proceso que realiza, el cual consiste en realizar dos ciclos de cálculos de 4 bits, 4 bits bajos del pestillo y 4 bits altos recién calculados. Para ello, el ALU tiene dos buses internos de 4 bits concetados al bus de registros de 8 bits. La ALU cuenta con pestillos, los cuales ayudan a transferir datos entre buses y a coordinar el el procesamiento de los datos, pudiendo almacenar operandos hasta que puede usarlos en caso de existir necesidad de un acarreo. 
+                </p>
+            </section>
+            <section id="tab2-content" class="tab-content">
+                <h2>Registros</h2>
+                <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor excepturi dolorem debitis, at nobis
+                    ab eligendi enim rem repellat alias, voluptas tempora et soluta? Blanditiis exercitationem animi
+                    eligendi debitis omnis?
+                </p>
+            </section>
+            <section id="tab3-content" class="tab-content">
+                <h2>Buses</h2>
+                <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident sunt nesciunt soluta quo, illum
+                    qui doloremque perspiciatis necessitatibus ea, iure deleniti animi eum quos et cupiditate
+                    praesentium non? Odio, ad.
+                </p>
+            </section>
+            <section id="tab4-content" class="tab-content">
+                <h2>Pila</h2>
+                <p>
+                    En el Zilog Z80, la pila es una parte esencial de la gestión de memoria. La pila es utilizada para
+                    almacenar direcciones de retorno, parámetros de subrutinas y variables locales. La pila en el Z80
+                    opera en la memoria principal y su posición se maneja mediante el registro de puntero de pila (SP).
+                    Las operaciones de push (empujar) y pop (sacar) son usadas para añadir y retirar datos de la pila,
+                    respectivamente.
+                </p>
+            </section>
+            <section id="tab5-content" class="tab-content">
+                <h2>Intefaz I/O</h2>
+                <p>
+                    El Zilog Z80 permite la comunicación con dispositivos periféricos a través de su interfaz de
+                    entrada/salida (I/O). Utiliza un espacio de direcciones de I/O separado del espacio de direcciones
+                    de memoria, lo que permite hasta 256 puertos de E/S diferentes. La CPU puede leer o escribir datos
+                    directamente en estos puertos para interactuar con dispositivos externos como teclados, pantallas, y
+                    otros periféricos.
+                </p>
+            </section>
+            <section id="tab6-content" class="tab-content">
+                <h2>SRAM</h2>
+                <p>
+                    A diferencia de los más antiguos Z280 y Z380, el Zilog Z80 no tiene (ni necesita) una memoria caché.
+                    En lugar de ello, está diseñado para funcionar directamente con SRAM rápida como memoria principal,
+                    ya que esta se ha vuelto más asequible.
+                </p>
+            </section>
+        </div>
+    </div>
+    <script src="./js/script.js"></script>
+</body>
+
 </html>
-
-
-
-
-<!-- 
-
-      
- -->
