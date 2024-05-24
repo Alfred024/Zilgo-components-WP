@@ -3,21 +3,22 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>Accordion 01</title>
+  <title>Arquitectura física del ZilogZ80</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet" type='text/css'>
   <link rel="stylesheet" type="text/css" href="./styles/index.css">
+  <link rel="stylesheet" href="https://alfred024.github.io/CSS-mio/styles.css">
 </head>
 
 <body>
   <header class="">
-    <h1>Componentes del Zilog Z80</h1>
+    <h1 class="text-align-center padding-10 text-green">Componentes del Zilog Z80</h1>
   </header>
-  <div style="display:flex;">
-    <div class="faq-container">
+  <div class="flex" style="height: 85vh;">
 
+    <div class="faq-container padding-10 flex-column">
       <details>
         <summary>
           <span class="faq-title">
@@ -128,11 +129,12 @@
           alimentación, GND es la conexión a tierra, y CLK es la señal de reloj que sincroniza las operaciones del CPU.
         </div>
       </details>
+    </div>
 
+    <div class="imgs_container width-50 padding-20 flex center-flex-xy">
+      <img id="dynamic_image" class="border-radius-20" src="./images/10.JPG" alt="imágen en base al último elemento clickeado">
     </div>
-    <div class="imgs_container">
-      <img src="" alt="imágen en base al último elemento clickeado">
-    </div>
+
   </div>
   <script src="./js/script.js"></script>
 </body>

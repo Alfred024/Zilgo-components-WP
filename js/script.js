@@ -103,7 +103,13 @@ class Accordion {
     }
   }
   
+  let accordionNum = 0;
   document.querySelectorAll('details').forEach((el) => {
+    el.id = `${++accordionNum}`;
+    el.addEventListener('click', ()=>{
+      dynamic_image = document.getElementById('dynamic_image');
+      dynamic_image.src = `../images/${el.id}.JPG`;
+    });
     new Accordion(el);
   });
 
