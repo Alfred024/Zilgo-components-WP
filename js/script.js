@@ -1,52 +1,109 @@
 
-const allLinks = document.querySelectorAll(".tabs a");
-const allTabs = document.querySelectorAll(".tab-content")
-const tabContentWrapper = document.querySelector(".tab-content-wrapper");
+//? This code is for animating details
+//? of summary component and slightly modified 
+//? https://css-tricks.com/how-to-animate-the-
+//? details-element-using-waapi/
 
-const shiftTabs = (linkId) => {
-  allTabs.forEach((tab, i) => {
-      
-    if (tab.id.includes(linkId)) {
-      allTabs.forEach((tabItem) => { 
-        tabItem.style = `transform: translateY(-${i*300}px);`;
-      });
+class Accordion {
+    constructor(el) {
+      this.el = el;
+      this.summary = el.querySelector('summary');
+      this.content = el.querySelector('.faq-content');
+      this.expandIcon = this.summary.querySelector('.expand-icon')
+      this.animation = null;
+      this.isClosing = false;
+      this.isExpanding = false;
+      this.summary.addEventListener('click', (e) => this.onClick(e));
     }
-  });
-}
+  
+    onClick(e) {
+      e.preventDefault();
+      this.el.style.overflow = 'hidden';
 
-allLinks.forEach((elem) => {
-  elem.addEventListener('click', function() {
-    const linkId = elem.id;
-    const hrefLinkClick = elem.href;
-
-    allLinks.forEach((link, i) => {
-      if (link.href == hrefLinkClick){
-        link.classList.add("active");
-      } else {
-        link.classList.remove('active');
+      if (this.isClosing || !this.el.open) {
+        this.open();
+      } else if (this.isExpanding || this.el.open) {
+        this.shrink();
       }
-    });
+    }
+  
+    shrink() {
+      this.isClosing = true;
 
-    shiftTabs(linkId);
-  });
-});
+      const startHeight = `${this.el.offsetHeight}px`;
+      const endHeight = `${this.summary.offsetHeight}px`;
 
-//? handle proper selection for initial load
-const currentHash = window.location.hash;
+      if (this.animation) {
+        this.animation.cancel();
+      }
+      
+      this.animation = this.el.animate({
+        height: [startHeight, endHeight]
+      }, {
+        duration: 400,
+        easing: 'ease-out'
+      });
 
-let activeLink = document.querySelector(`.tabs a`);
+      this.animation.onfinish = () => {
+        this.expandIcon.setAttribute('src', 'assets/plus.svg');
+        return this.onAnimationFinish(false);
+      }
+      this.animation.oncancel = () => {
+        this.expandIcon.setAttribute('src', 'assets/plus.svg');
+        return this.isClosing = false;
+      }
+    }
+  
+    open() {
+      this.el.style.height = `${this.el.offsetHeight}px`;
+      this.el.open = true;
+      window.requestAnimationFrame(() => this.expand());
+    }
+  
+    expand() {
+      this.isExpanding = true;
 
-if (currentHash) {
-  const visibleHash = document.getElementById(
-    `${currentHash.replace('#', '')}`
-  );
+      const startHeight = `${this.el.offsetHeight}px`;
+      const endHeight = `${this.summary.offsetHeight + 
+                           this.content.offsetHeight}px`;
 
-  if (visibleHash) {
-    activeLink = visibleHash;
+      if (this.animation) {
+        this.animation.cancel();
+      }
+      
+      this.animation = this.el.animate({
+        height: [startHeight, endHeight]
+      }, {
+        duration: 350,
+        easing: 'ease-out'
+      });
+
+      this.animation.onfinish = () => {
+        this.expandIcon.setAttribute(
+            'src',
+            'assets/minus.svg'
+        );
+        return this.onAnimationFinish(true);
+      }
+      this.animation.oncancel = () => {
+        this.expandIcon.setAttribute(
+            'src',
+            'assets/minus.svg'
+        );
+        return this.isExpanding = false;
+      }
+    }
+  
+    onAnimationFinish(open) {
+      this.el.open = open;
+      this.animation = null;
+      this.isClosing = false;
+      this.isExpanding = false;
+      this.el.style.height = this.el.style.overflow = '';
+    }
   }
-}
-
-activeLink.classList.toggle('active');
-
-shiftTabs(activeLink.id);
+  
+  document.querySelectorAll('details').forEach((el) => {
+    new Accordion(el);
+  });
 
