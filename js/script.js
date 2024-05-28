@@ -4,6 +4,9 @@
 //? https://css-tricks.com/how-to-animate-the-
 //? details-element-using-waapi/
 
+
+
+
 class Accordion {
     constructor(el) {
       this.el = el;
@@ -16,7 +19,15 @@ class Accordion {
       this.summary.addEventListener('click', (e) => this.onClick(e));
     }
   
-    onClick(e) {
+    async onClick(e) {
+      
+      //MANDAR SEÑAL A ARDUINO DE LED QUE DEBE PRENDERSE
+      console.log(`ID of element clicked: ${this.el.id}`);
+      if (!port) {
+        await connectToArduino();
+      }
+      await sendCommand((1+Number(this.el.id)));
+
       e.preventDefault();
       this.el.style.overflow = 'hidden';
 
@@ -55,9 +66,12 @@ class Accordion {
     }
   
     open() {
+
       this.el.style.height = `${this.el.offsetHeight}px`;
       this.el.open = true;
       window.requestAnimationFrame(() => this.expand());
+
+      
     }
   
     expand() {
@@ -112,4 +126,66 @@ class Accordion {
     });
     new Accordion(el);
   });
+
+
+  
+// Código para la conexión con Arduino
+
+let port;
+let writer;
+let reader;
+
+// document.getElementById('ledOnButton').addEventListener('click', async () => {
+//     if (!port) {
+//         await connectToArduino();
+//     }
+//     await sendCommand('1');
+// });
+
+// document.getElementById('ledOffButton').addEventListener('click', async () => {
+//     if (!port) {
+//         await connectToArduino();
+//     }
+//     await sendCommand('0');
+// });
+
+async function connectToArduino() {
+    try {
+        port = await navigator.serial.requestPort();
+        await port.open({ baudRate: 9600 });
+
+        const encoder = new TextEncoderStream();
+        writer = encoder.writable.getWriter();
+        const outputDone = encoder.readable.pipeTo(port.writable);
+
+        const decoder = new TextDecoderStream();
+        reader = decoder.readable.getReader();
+        const inputDone = port.readable.pipeTo(decoder.writable);
+
+        readLoop();
+
+        console.log('Conectado al Arduino');
+    } catch (error) {
+        console.error('Error al conectar con Arduino:', error);
+    }
+}
+
+async function sendCommand(command) {
+    if (writer) {
+        await writer.write(command); // Enviar comando para encender o apagar el LED
+        console.log(`Señal enviada: ${command}`);
+    }
+}
+
+async function readLoop() {
+    while (true) {
+        const { value, done } = await reader.read();
+        if (done) {
+            console.log('Stream cerrado');
+            reader.releaseLock();
+            break;
+        }
+        console.log('Respuesta del Arduino:', value);
+    }
+}
 
